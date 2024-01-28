@@ -7,7 +7,7 @@ import whisper
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import HTMLResponse
 from pydub import AudioSegment
-from simulator import get_completion, build_system_prompt, get_voice, messages_to_turns, get_character
+from simulator import get_completion, build_system_prompt, get_voice, messages_to_turns, get_character, get_voice_elevenlabs
 from evaluation import check_call_resolved, check_polite_advisor, check_confirm_intention, check_confirm_no_further
 from transcription import get_transcription_from_api
 
@@ -213,5 +213,5 @@ async def websocket_endpoint(websocket: WebSocket):
         messages.append({"role": "assistant", "content": assistant_response})
         print(assistant_response)
 
-        base64_response = get_voice(assistant_response)
+        base64_response = get_voice_elevenlabs(assistant_response)
         await websocket.send_text(base64_response)

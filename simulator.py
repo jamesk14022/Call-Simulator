@@ -2,6 +2,7 @@ from llm import CLIENT, get_completion
 import base64
 import io
 import json
+import requests
 from pathlib import Path
 from representations import Turn
 
@@ -21,7 +22,7 @@ def get_character(character_nickname):
   return characters['characters'][character_nickname]
 
 
-def get_voice(input):
+def get_voice_openai(input):
     spoken_response = CLIENT.audio.speech.create(
       model="tts-1", # lower latency than tts-1-hd
       voice="alloy",
@@ -31,6 +32,38 @@ def get_voice(input):
 
     buffer = io.BytesIO()
     for chunk in spoken_response.iter_bytes(chunk_size=4096):
+      buffer.write(chunk)
+    buffer.seek(0)
+
+    # Read the binary data from the BytesIO object
+    binary_data = buffer.read()
+
+    # Encode the binary data as a base64 string
+    return base64.b64encode(binary_data).decode('utf-8')
+
+def get_voice_elevenlabs(input):
+
+    CHUNK_SIZE = 1024
+    url = "https://api.elevenlabs.io/v1/text-to-speech/bVMeCyTHy58xNoL34h3p"
+
+    headers = {
+      "Accept": "audio/mpeg",
+      "Content-Type": "application/json",
+      "xi-api-key": "7624dad3b8c1a1d8d30f9419128638d0"
+    }
+
+    data = {
+      "text": input,
+      "model_id": "eleven_monolingual_v1",
+      "voice_settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.5
+      }
+    }
+    response = requests.post(url, json=data, headers=headers)
+
+    buffer = io.BytesIO()
+    for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
       buffer.write(chunk)
     buffer.seek(0)
 
