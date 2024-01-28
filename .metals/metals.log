@@ -1,0 +1,6 @@
+2024.01.02 23:29:59 INFO  Started: Metals version 1.2.0 in folders '/Users/james/Documents/code/insane_whisper_test' for client Visual Studio Code 1.85.0.
+2024.01.02 23:30:00 WARN  Build server is not auto-connectable.
+2024.01.02 23:30:00 WARN  no build tool detected in workspace '/Users/james/Documents/code/insane_whisper_test'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2024.01.03 20:42:47 INFO  Shutting down server
+2024.01.03 20:42:47 INFO  shutting down Metals
+2024.01.03 20:42:47 INFO  Exiting server
