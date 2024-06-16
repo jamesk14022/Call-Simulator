@@ -1,4 +1,4 @@
-from llm import CLIENT, get_completion
+from llm import CLIENT
 import base64
 import io
 import os
