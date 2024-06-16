@@ -1,0 +1,107 @@
+  <!-- As a heading -->
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Call Simulator</span>
+    </div>
+  </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="red"
+        class="bi bi-record-circle Blink"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+        />
+        <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+      </svg>
+      <p id="timer" style="display: inline">0 seconds</p>
+      <button id="toggleCall" class="btn btn-primary" onclick="toggleCall()">
+        Hang up
+      </button>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Transfer customer
+        </button>
+        <ul class="dropdown-menu" id="transfer-dropdown" aria-labelledby="dropdownMenuButton1"></ul>
+      </div> 
+      <button
+        id="evaluationButton"
+        class="btn btn-primary"
+        onclick="evaluateCall();"
+      >
+        Evaluate Call
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="button"
+        aria-pressed="false"
+        autocomplete="off"
+        onclick="toggleHold()"
+      >
+        Hold <p id="holdTimer" style="display: inline"></p>
+      </button>
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+              />
+            </svg>
+            Caller Information - mobile: +447891024733
+          </div>
+          <h5 class="card-title" style="padding: 10px;">Unknown caller</h5>
+          <div class="card-text" style="padding: 10px;">
+            <ul>
+                <li>Selected "debit card" in IVR system</li>
+                <li>Unathenticated</li>
+            </ul>
+          </div>
+          <div class="card-footer text-muted">
+            Call Simulator default character
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+
+  <div
+    id="holdErrorToast"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <strong class="me-auto">Call simulator Notification</strong>
+      <small>now</small>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body">
+      Please take the customer off hold before speaking.
+    </div>
+  </div>
+</div>

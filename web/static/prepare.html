@@ -1,0 +1,40 @@
+  <nav class="navbar bg-body-tertiary">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">Call Simulator</span>
+    </div>
+  </nav>
+<main>
+<div class="container" id="prepare">
+    <div class="row">
+    <hr class="col-3 col-md-2 mb-5">
+    <h1 class="text-body-emphasis">Prepare for your simulation</h1>
+    <p class="fs-5 col-md-8">You are about to have an opportunity to deal with a simulated call. The customer will be simulated as an AI generated character. Act as you would on a real call, listen carefully to the customer's request, and speak clearly.</p>
+
+    <ul style="margin-left: 40px;"> 
+        <li>Ensure your speakers are turned on.</li>
+        <li>Ensure you approve any request for microphone access</li>
+        <li>As on a real call, you can hang up, hold or, if appropriate, transfer the caller.</li>
+    </ul>
+
+    
+    <p class="fs-5 col-md-8">You will be evaluated on the following attributes: </p>
+    <ol style="margin-left: 40px;">
+        <li>Whether you resolve the call</li>
+        <li>Handling time</li>
+        <li>Polite demeanor</li>
+        <li>If you confirm the customer's intention</li> 
+        <li>If you confirmed whether the customer has any further questions</li>
+    </ol>
+
+    <div class="mb-5">
+      <a class="btn btn-primary btn-lg px-4" style="margin-top: 40px;" onclick="start();">Start Simulation</a>
+    </div>
+    </div>
+    </div>
+    <div class="row justify-content-center" style="margin-top: 100px;" id="spinner" hidden>
+        <h2 style="text-align: center;">Simulation running in a new window.</h2>
+        <div class="spinner-border" style="margin-top: 30px;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+  </main>

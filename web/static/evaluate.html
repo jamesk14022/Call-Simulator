@@ -1,0 +1,169 @@
+<!-- As a heading -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1">Call Simulator</span>
+  </div>
+</nav>
+<div class="container">
+  <div id="loadingBox" class="row justify-content-center" style="margin-top: 100px;" id="spinner">
+    <h2 style="text-align: center;">Loading evaluation.</h2>
+    <div class="spinner-border" style="margin-top: 30px;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div id="contentBox" class="row justify-content-center" hidden>
+    <div class="col-md-8">
+    <div id="evaluation" style="margin-top: 50px;">
+      <h2>Evaluation - <span style="color: green" id="eval-text">70%</span></h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="text-align: center">
+            <div class="card-header">Handling Time</div>
+            <div class="card-text">
+              <p id="elapsedTime" style="text-align: center; margin-top: 15px">
+                330s
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="text-align: center">
+            <div class="card-header">Call Resolved</div>
+            <div class="card-text">
+              <p id="resolved" style="text-align: center; margin-top: 15px">
+                True
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="text-align: center">
+            <div class="card-header">Call Transfered</div>
+            <div class="card-text">
+              <p id="resolved" style="text-align: center; margin-top: 15px">
+                False
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              <span
+                style="color: orange; margin-right: 20px"
+                hidden
+                id="acc1-warning"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-info-square-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  /></svg></span
+              ><span id="acc1-head"></span>
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body" id="acc1-body"></div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo"
+              aria-expanded="false"
+              aria-controls="flush-collapseTwo"
+            >
+              <span
+                style="color: orange; margin-right: 20px"
+                hidden
+                id="acc2-warning"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-info-square-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  /></svg></span
+              ><span id="acc2-head"></span>
+            </button>
+          </h2>
+          <div
+            id="flush-collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body" id="acc2-body"></div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              <span
+                style="color: orange; margin-right: 20px"
+                hidden
+                id="acc3-warning"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-info-square-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  /></svg></span
+              ><span id="acc3-head"></span>
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body" id="acc3-body"></div>
+          </div>
+        </div>
+      </div>
+      <div id="transcription" style="margin-top: 50px;">
+      <div class="row">
+        <h3>Transcription</h3>
+        <p id="transcription-content"></p>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
