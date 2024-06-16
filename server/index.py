@@ -3,11 +3,12 @@ import io
 import base64
 import time
 from representations import Call 
+from pathlib import Path
 import whisper
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import HTMLResponse
 from pydub import AudioSegment
-from simulator import get_completion, build_system_prompt, get_voice, messages_to_turns, get_character, get_voice_elevenlabs
+from simulator import get_completion, build_system_prompt, messages_to_turns, get_character, get_voice_elevenlabs
 from evaluation import check_call_resolved, check_polite_advisor, check_confirm_intention, check_confirm_no_further
 from transcription import get_transcription_from_api
 
@@ -15,28 +16,29 @@ messages = [
           {"role": "system", "content": build_system_prompt("bowser")},
                 ]
 
+STATIC_DIR = Path(__file__).parent.parent / "web/static"
 WHISPER_MODEL = whisper.load_model("medium")
 
 start_time = 0
 finished = False
 
 app = FastAPI()
-with open("client.js", "r") as f:
+with open(STATIC_DIR / "js/client.js", "r") as f:
     client_js_source = f.read()
 
-with open("evaluate.js", "r") as f:
+with open(STATIC_DIR / "js/evaluate.js", "r") as f:
     evaluate_js_source = f.read()
 
-with open("prepare.js", "r") as f:
+with open(STATIC_DIR / "js/prepare.js", "r") as f:
     prepare_js_source = f.read()
 
-with open("index.html", "r") as f:
+with open(STATIC_DIR / "index.html", "r") as f:
     index_html_body = f.read()
 
-with open("evaluate.html", "r") as f:
+with open(STATIC_DIR / "evaluate.html", "r") as f:
     evaluate_html_body = f.read()
 
-with open("prepare.html", "r") as f:
+with open(STATIC_DIR / "prepare.html", "r") as f:
     prepare_html_body = f.read()
 
 
@@ -203,9 +205,7 @@ async def websocket_endpoint(websocket: WebSocket):
         temp = tempfile.NamedTemporaryFile(mode='w+b', suffix='.wav', delete=False)
         audio_segment.export(temp.name, format="wav")
 
-        #result = WHISPER_MODEL.transcribe(temp.name)
         result = get_transcription_from_api(temp.name)
-        print(result)
         temp.close()
 
         messages.append({"role": "user", "content": result.text})

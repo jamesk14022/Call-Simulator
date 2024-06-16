@@ -1,12 +1,13 @@
 from llm import CLIENT, get_completion
 import base64
 import io
+import os
 import json
 import requests
 from pathlib import Path
 from representations import Turn
 
-with open(Path(__file__).parent / "./characters.json") as f:
+with open(Path(__file__).parent.parent / "./config/characters.json") as f:
   characters = json.load(f)
 
 def build_system_prompt(character_nickname):
@@ -49,7 +50,7 @@ def get_voice_elevenlabs(input):
     headers = {
       "Accept": "audio/mpeg",
       "Content-Type": "application/json",
-      "xi-api-key": "7624dad3b8c1a1d8d30f9419128638d0"
+      "xi-api-key": os.environ.get("ELEVENLABS_API_KEY")
     }
 
     data = {
@@ -80,17 +81,4 @@ def messages_to_turns(messages):
       turns.append(Turn(message["role"], message["content"]))
 
   return turns
-
-
-# if __name__ == "__main__":
-
-#   start_time = time.time()
-
-#   while len(messages) < 15: 
-#     #user_message = input("... \n\n")
-#     mic = WhisperMic()
-#     user_message = mic.listen(timeout=10)
-#     print(user_message)
-
-
 
